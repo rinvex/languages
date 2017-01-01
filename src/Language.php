@@ -129,8 +129,6 @@ class Language
     /**
      * Get the given native name or fallback to first native name.
      *
-     * @param string|null $language
-     *
      * @return string|null
      */
     public function getNativeName()
