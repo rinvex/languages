@@ -7,8 +7,8 @@
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/language.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/language/)
 [![Code Climate](https://img.shields.io/codeclimate/github/rinvex/language.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/language)
 [![Travis](https://img.shields.io/travis/rinvex/language.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/language)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/f2dca242-eb65-4bcc-8481-cd27ea16c804.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/f2dca242-eb65-4bcc-8481-cd27ea16c804)
-[![StyleCI](https://styleci.io/repos/66037019/shield)](https://styleci.io/repos/66037019)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/4505ee8a-52fc-4229-ae93-7e4f2523bda9.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/4505ee8a-52fc-4229-ae93-7e4f2523bda9)
+[![StyleCI](https://styleci.io/repos/77772990/shield)](https://styleci.io/repos/77772990)
 [![License](https://img.shields.io/packagist/l/rinvex/language.svg?label=License&style=flat-square)](https://github.com/rinvex/language/blob/develop/LICENSE)
 
 
@@ -87,7 +87,9 @@ $language_families = language_families();
 $whereLanguages = \Rinvex\Language\LanguageLoader::where('script.name', 'Latin');
 ```
 
-> **Note:** This package is framework-agnostic, so it's compatible with any PHP framework whatsoever without any dependencies at all, except for the PHP version itself **^7.0.0**. Awesome, huh? :smiley:
+> **Notes:**
+> - **Rinvex Language** is framework-agnostic, so it's compatible with any PHP framework whatsoever without any dependencies at all, except for the PHP version itself **^7.0.0**. Awesome, huh? :smiley:
+> - **Rinvex Language** provides the global helpers for your convenience and for ease of use, but in fact it's just wrappers around the underlying `LanguageLoader` class, which you can utilize and use directly if you wish
 
 
 ## Features Explained

@@ -35,21 +35,21 @@ class HelpersTest extends PHPUnit_Framework_TestCase
                 'name' => 'Ethiopic (Ge_ez)',
                 'iso_15924' => 'Ethi',
                 'iso_numeric' => '430',
-                'direction' => 'ltr'
+                'direction' => 'ltr',
             ],
             'family' => [
                 'name' => 'Afro-Asiatic',
                 'iso_639_5' => 'afa',
-                'hierarchy' => 'afa'
+                'hierarchy' => 'afa',
             ],
             'cultures' => [
                 'am-ET' => [
                     'name' => 'Amharic (Ethiopia)',
-                    'native' => 'አማርኛ (ኢትዮጵያ)'
-                ]
+                    'native' => 'አማርኛ (ኢትዮጵያ)',
+                ],
             ],
             'scope' => 'individual',
-            'type' => 'living'
+            'type' => 'living',
         ];
 
         $this->assertEquals($amharic, language('am', false));
