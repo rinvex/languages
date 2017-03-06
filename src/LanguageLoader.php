@@ -108,7 +108,7 @@ class LanguageLoader
      */
     public static function where($key, $operator, $value = null)
     {
-        if (func_num_args() == 2) {
+        if (func_num_args() === 2) {
             $value = $operator;
             $operator = '=';
         }
@@ -137,9 +137,9 @@ class LanguageLoader
             switch ($operator) {
                 default:
                 case '=':
-                case '==':  return $retrieved == $value;
+                case '==':  return $retrieved === $value;
                 case '!=':
-                case '<>':  return $retrieved != $value;
+                case '<>':  return $retrieved !== $value;
                 case '<':   return $retrieved < $value;
                 case '>':   return $retrieved > $value;
                 case '<=':  return $retrieved <= $value;

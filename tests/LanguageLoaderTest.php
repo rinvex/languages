@@ -134,7 +134,7 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     {
         $array1 = [['id' => 1, 'name' => 'Hello'], ['id' => 2, 'name' => 'World']];
         $this->assertEquals([1 => ['id' => 2, 'name' => 'World']], LanguageLoader::filter($array1, function ($item) {
-            return $item['id'] == 2;
+            return $item['id'] === 2;
         }));
 
         $array2 = ['', 'Hello', '', 'World'];
@@ -142,7 +142,7 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
 
         $array3 = ['id' => 1, 'first' => 'Hello', 'second' => 'World'];
         $this->assertEquals(['first' => 'Hello', 'second' => 'World'], LanguageLoader::filter($array3, function ($item, $key) {
-            return $key != 'id';
+            return $key !== 'id';
         }));
     }
 
@@ -285,13 +285,13 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
         $array = [
             [
                 'account' => 'a',
-                'users'   => [
+                'users' => [
                     ['first' => 'taylor', 'last' => 'otwell', 'email' => 'foo'],
                 ],
             ],
             [
                 'account' => 'b',
-                'users'   => [
+                'users' => [
                     ['first' => 'abigail', 'last' => 'otwell'],
                     ['first' => 'dayle', 'last' => 'rees'],
                 ],
