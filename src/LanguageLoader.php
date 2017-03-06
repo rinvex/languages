@@ -108,7 +108,7 @@ class LanguageLoader
      */
     public static function where($key, $operator, $value = null)
     {
-        if (func_num_args() == 2) {
+        if (func_num_args() === 2) {
             $value = $operator;
             $operator = '=';
         }
