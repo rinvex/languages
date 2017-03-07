@@ -40,6 +40,8 @@ class LanguageLoader
      */
     public static function language($code, $hydrate = true)
     {
+        $code = mb_strtolower($code);
+
         if (! isset(static::$languages)) {
             static::$languages = json_decode(static::getFile(__DIR__.'/../resources/languages.json'), true);
         }
