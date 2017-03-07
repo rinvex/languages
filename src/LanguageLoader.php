@@ -131,7 +131,7 @@ class LanguageLoader
      *
      * @return \Closure
      */
-    public static function operatorForWhere($key, $operator, $value)
+    protected static function operatorForWhere($key, $operator, $value)
     {
         return function ($item) use ($key, $operator, $value) {
             $retrieved = static::get($item, $key);
@@ -160,7 +160,7 @@ class LanguageLoader
      *
      * @return array
      */
-    public static function filter($items, callable $callback = null)
+    protected static function filter($items, callable $callback = null)
     {
         if ($callback) {
             return array_filter($items, $callback, ARRAY_FILTER_USE_BOTH);
@@ -178,7 +178,7 @@ class LanguageLoader
      *
      * @return mixed
      */
-    public static function get($target, $key, $default = null)
+    protected static function get($target, $key, $default = null)
     {
         if (is_null($key)) {
             return $target;
@@ -218,7 +218,7 @@ class LanguageLoader
      *
      * @return array
      */
-    public static function pluck($array, $value, $key = null)
+    protected static function pluck($array, $value, $key = null)
     {
         $results = [];
 
@@ -251,7 +251,7 @@ class LanguageLoader
      *
      * @return array
      */
-    public static function collapse($array)
+    protected static function collapse($array)
     {
         $results = [];
 
