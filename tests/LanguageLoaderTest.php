@@ -32,10 +32,10 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     {
         $reflectedLoader = new ReflectionClass(LanguageLoader::class);
         self::$methods['get'] = $reflectedLoader->getMethod('get');
-        self::$methods['filter'] = $reflectedLoader->getMethod('filter');
         self::$methods['pluck'] = $reflectedLoader->getMethod('pluck');
-        self::$methods['collapse'] = $reflectedLoader->getMethod('collapse');
+        self::$methods['filter'] = $reflectedLoader->getMethod('filter');
         self::$methods['getFile'] = $reflectedLoader->getMethod('getFile');
+        self::$methods['collapse'] = $reflectedLoader->getMethod('collapse');
 
         foreach (self::$methods as $method) {
             $method->setAccessible(true);
