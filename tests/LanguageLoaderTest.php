@@ -25,13 +25,26 @@ use Rinvex\Language\LanguageLoaderException;
 
 class LanguageLoaderTest extends PHPUnit_Framework_TestCase
 {
-    protected function reset_languages_property()
+    /** @var array */
+    protected static $methods;
+
+    public static function setUpBeforeClass()
     {
-        // Reset LanguageLoader::$languages property
         $reflectedLoader = new ReflectionClass(LanguageLoader::class);
-        $reflectedProperty = $reflectedLoader->getProperty('languages');
-        $reflectedProperty->setAccessible(true);
-        $reflectedProperty->setValue(null, null);
+        self::$methods['get'] = $reflectedLoader->getMethod('get');
+        self::$methods['pluck'] = $reflectedLoader->getMethod('pluck');
+        self::$methods['filter'] = $reflectedLoader->getMethod('filter');
+        self::$methods['getFile'] = $reflectedLoader->getMethod('getFile');
+        self::$methods['collapse'] = $reflectedLoader->getMethod('collapse');
+
+        foreach (self::$methods as $method) {
+            $method->setAccessible(true);
+        }
+    }
+
+    public static function tearDownAfterClass()
+    {
+        self::$methods = null;
     }
 
     /** @test */
@@ -71,7 +84,6 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function it_gets_data_with_where_conditions()
     {
-        $this->reset_languages_property();
         $this->assertEquals(['ar', 'fa', 'ks', 'ku', 'ps', 'sd', 'ug', 'ur'], array_keys(LanguageLoader::where('script.name', 'Arabic')));
         $this->assertEquals('Arabic', current(LanguageLoader::where('native', '=', 'العربية'))['name']);
         $this->assertEquals('Arabic', current(LanguageLoader::where('native', '==', 'العربية'))['name']);
@@ -89,7 +101,6 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function it_returns_languages_array()
     {
-        $this->reset_languages_property();
         $this->assertEquals(183, count(LanguageLoader::languages()));
         $this->assertInternalType('array', LanguageLoader::languages()['am']);
         $this->assertEquals('English', LanguageLoader::languages()['en']['name']);
@@ -98,7 +109,6 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function it_returns_language_scripts_array()
     {
-        $this->reset_languages_property();
         $this->assertEquals(29, count(LanguageLoader::scripts()));
         $this->assertInternalType('array', LanguageLoader::scripts());
         $this->assertArrayHasKey('Arab', LanguageLoader::scripts());
@@ -107,7 +117,6 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function it_returns_language_families_array()
     {
-        $this->reset_languages_property();
         $this->assertEquals(27, count(LanguageLoader::families()));
         $this->assertInternalType('array', LanguageLoader::families());
         $this->assertArrayHasKey('afa', LanguageLoader::families());
@@ -133,16 +142,16 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     public function it_filters_data()
     {
         $array1 = [['id' => 1, 'name' => 'Hello'], ['id' => 2, 'name' => 'World']];
-        $this->assertEquals([1 => ['id' => 2, 'name' => 'World']], LanguageLoader::filter($array1, function ($item) {
-            return $item['id'] == 2;
+        $this->assertEquals([1 => ['id' => 2, 'name' => 'World']], self::$methods['filter']->invoke(null, $array1, function ($item) {
+            return $item['id'] === 2;
         }));
 
         $array2 = ['', 'Hello', '', 'World'];
-        $this->assertEquals(['Hello', 'World'], array_values(LanguageLoader::filter($array2)));
+        $this->assertEquals(['Hello', 'World'], array_values(self::$methods['filter']->invoke(null, $array2)));
 
         $array3 = ['id' => 1, 'first' => 'Hello', 'second' => 'World'];
-        $this->assertEquals(['first' => 'Hello', 'second' => 'World'], LanguageLoader::filter($array3, function ($item, $key) {
-            return $key != 'id';
+        $this->assertEquals(['first' => 'Hello', 'second' => 'World'], self::$methods['filter']->invoke(null, $array3, function ($item, $key) {
+            return $key !== 'id';
         }));
     }
 
@@ -152,22 +161,22 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
         $object = (object) ['users' => ['name' => ['Taylor', 'Otwell']]];
         $array = [(object) ['users' => [(object) ['name' => 'Taylor']]]];
         $dottedArray = ['users' => ['first.name' => 'Taylor', 'middle.name' => null]];
-        $this->assertEquals('Taylor', LanguageLoader::get($object, 'users.name.0'));
-        $this->assertEquals('Taylor', LanguageLoader::get($array, '0.users.0.name'));
-        $this->assertNull(LanguageLoader::get($array, '0.users.3'));
-        $this->assertEquals('Not found', LanguageLoader::get($array, '0.users.3', 'Not found'));
-        $this->assertEquals('Not found', LanguageLoader::get($array, '0.users.3', function () {
+        $this->assertEquals('Taylor', self::$methods['get']->invoke(null, $object, 'users.name.0'));
+        $this->assertEquals('Taylor', self::$methods['get']->invoke(null, $array, '0.users.0.name'));
+        $this->assertNull(self::$methods['get']->invoke(null, $array, '0.users.3'));
+        $this->assertEquals('Not found', self::$methods['get']->invoke(null, $array, '0.users.3', 'Not found'));
+        $this->assertEquals('Not found', self::$methods['get']->invoke(null, $array, '0.users.3', function () {
             return 'Not found';
         }));
-        $this->assertEquals('Taylor', LanguageLoader::get($dottedArray, ['users', 'first.name']));
-        $this->assertNull(LanguageLoader::get($dottedArray, ['users', 'middle.name']));
-        $this->assertEquals('Not found', LanguageLoader::get($dottedArray, ['users', 'last.name'], 'Not found'));
+        $this->assertEquals('Taylor', self::$methods['get']->invoke(null, $dottedArray, ['users', 'first.name']));
+        $this->assertNull(self::$methods['get']->invoke(null, $dottedArray, ['users', 'middle.name']));
+        $this->assertEquals('Not found', self::$methods['get']->invoke(null, $dottedArray, ['users', 'last.name'], 'Not found'));
     }
 
     /** @test */
     public function it_returns_target_when_missing_key()
     {
-        $this->assertEquals(['test'], LanguageLoader::get(['test'], null));
+        $this->assertEquals(['test'], self::$methods['get']->invoke(null, ['test'], null));
     }
 
     /** @test */
@@ -178,8 +187,8 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
             ['name' => 'abigail'],
             ['name' => 'dayle'],
         ];
-        $this->assertEquals(['taylor', 'abigail', 'dayle'], LanguageLoader::get($array, '*.name'));
-        $this->assertEquals(['taylorotwell@gmail.com', null, null], LanguageLoader::get($array, '*.email', 'irrelevant'));
+        $this->assertEquals(['taylor', 'abigail', 'dayle'], self::$methods['get']->invoke(null, $array, '*.name'));
+        $this->assertEquals(['taylorotwell@gmail.com', null, null], self::$methods['get']->invoke(null, $array, '*.email', 'irrelevant'));
         $array = [
             'users' => [
                 ['first' => 'taylor', 'last' => 'otwell', 'email' => 'taylorotwell@gmail.com'],
@@ -188,10 +197,10 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
             ],
             'posts' => null,
         ];
-        $this->assertEquals(['taylor', 'abigail', 'dayle'], LanguageLoader::get($array, 'users.*.first'));
-        $this->assertEquals(['taylorotwell@gmail.com', null, null], LanguageLoader::get($array, 'users.*.email', 'irrelevant'));
-        $this->assertEquals('not found', LanguageLoader::get($array, 'posts.*.date', 'not found'));
-        $this->assertNull(LanguageLoader::get($array, 'posts.*.date'));
+        $this->assertEquals(['taylor', 'abigail', 'dayle'], self::$methods['get']->invoke(null, $array, 'users.*.first'));
+        $this->assertEquals(['taylorotwell@gmail.com', null, null], self::$methods['get']->invoke(null, $array, 'users.*.email', 'irrelevant'));
+        $this->assertEquals('not found', self::$methods['get']->invoke(null, $array, 'posts.*.date', 'not found'));
+        $this->assertNull(self::$methods['get']->invoke(null, $array, 'posts.*.date'));
     }
 
     /** @test */
@@ -219,10 +228,10 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
                 ],
             ],
         ];
-        $this->assertEquals(['taylor', 'abigail', 'abigail', 'dayle', 'dayle', 'taylor'], LanguageLoader::get($array, 'posts.*.comments.*.author'));
-        $this->assertEquals([4, 3, 2, null, null, 1], LanguageLoader::get($array, 'posts.*.comments.*.likes'));
-        $this->assertEquals([], LanguageLoader::get($array, 'posts.*.users.*.name', 'irrelevant'));
-        $this->assertEquals([], LanguageLoader::get($array, 'posts.*.users.*.name'));
+        $this->assertEquals(['taylor', 'abigail', 'abigail', 'dayle', 'dayle', 'taylor'], self::$methods['get']->invoke(null, $array, 'posts.*.comments.*.author'));
+        $this->assertEquals([4, 3, 2, null, null, 1], self::$methods['get']->invoke(null, $array, 'posts.*.comments.*.likes'));
+        $this->assertEquals([], self::$methods['get']->invoke(null, $array, 'posts.*.users.*.name', 'irrelevant'));
+        $this->assertEquals([], self::$methods['get']->invoke(null, $array, 'posts.*.users.*.name'));
     }
 
     /** @test */
@@ -255,28 +264,28 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
                     '#baz',
                 ],
             ],
-        ], LanguageLoader::pluck($data, 'comments'));
-        $this->assertEquals([['#foo', '#bar'], ['#baz']], LanguageLoader::pluck($data, 'comments.tags'));
-        $this->assertEquals([null, null], LanguageLoader::pluck($data, 'foo'));
-        $this->assertEquals([null, null], LanguageLoader::pluck($data, 'foo.bar'));
+        ], self::$methods['pluck']->invoke(null, $data, 'comments'));
+        $this->assertEquals([['#foo', '#bar'], ['#baz']], self::$methods['pluck']->invoke(null, $data, 'comments.tags'));
+        $this->assertEquals([null, null], self::$methods['pluck']->invoke(null, $data, 'foo'));
+        $this->assertEquals([null, null], self::$methods['pluck']->invoke(null, $data, 'foo.bar'));
     }
 
     /** @test */
     public function it_plucks_array_with_array_and_object_values()
     {
         $array = [(object) ['name' => 'taylor', 'email' => 'foo'], ['name' => 'dayle', 'email' => 'bar']];
-        $this->assertEquals(['taylor', 'dayle'], LanguageLoader::pluck($array, 'name'));
-        $this->assertEquals(['taylor' => 'foo', 'dayle' => 'bar'], LanguageLoader::pluck($array, 'email', 'name'));
+        $this->assertEquals(['taylor', 'dayle'], self::$methods['pluck']->invoke(null, $array, 'name'));
+        $this->assertEquals(['taylor' => 'foo', 'dayle' => 'bar'], self::$methods['pluck']->invoke(null, $array, 'email', 'name'));
     }
 
     /** @test */
     public function it_plucks_array_with_nested_keys()
     {
         $array = [['user' => ['taylor', 'otwell']], ['user' => ['dayle', 'rees']]];
-        $this->assertEquals(['taylor', 'dayle'], LanguageLoader::pluck($array, 'user.0'));
-        $this->assertEquals(['taylor', 'dayle'], LanguageLoader::pluck($array, ['user', 0]));
-        $this->assertEquals(['taylor' => 'otwell', 'dayle' => 'rees'], LanguageLoader::pluck($array, 'user.1', 'user.0'));
-        $this->assertEquals(['taylor' => 'otwell', 'dayle' => 'rees'], LanguageLoader::pluck($array, ['user', 1], ['user', 0]));
+        $this->assertEquals(['taylor', 'dayle'], self::$methods['pluck']->invoke(null, $array, 'user.0'));
+        $this->assertEquals(['taylor', 'dayle'], self::$methods['pluck']->invoke(null, $array, ['user', 0]));
+        $this->assertEquals(['taylor' => 'otwell', 'dayle' => 'rees'], self::$methods['pluck']->invoke(null, $array, 'user.1', 'user.0'));
+        $this->assertEquals(['taylor' => 'otwell', 'dayle' => 'rees'], self::$methods['pluck']->invoke(null, $array, ['user', 1], ['user', 0]));
     }
 
     /** @test */
@@ -285,34 +294,34 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
         $array = [
             [
                 'account' => 'a',
-                'users'   => [
+                'users' => [
                     ['first' => 'taylor', 'last' => 'otwell', 'email' => 'foo'],
                 ],
             ],
             [
                 'account' => 'b',
-                'users'   => [
+                'users' => [
                     ['first' => 'abigail', 'last' => 'otwell'],
                     ['first' => 'dayle', 'last' => 'rees'],
                 ],
             ],
         ];
-        $this->assertEquals([['taylor'], ['abigail', 'dayle']], LanguageLoader::pluck($array, 'users.*.first'));
-        $this->assertEquals(['a' => ['taylor'], 'b' => ['abigail', 'dayle']], LanguageLoader::pluck($array, 'users.*.first', 'account'));
-        $this->assertEquals([['foo'], [null, null]], LanguageLoader::pluck($array, 'users.*.email'));
+        $this->assertEquals([['taylor'], ['abigail', 'dayle']], self::$methods['pluck']->invoke(null, $array, 'users.*.first'));
+        $this->assertEquals(['a' => ['taylor'], 'b' => ['abigail', 'dayle']], self::$methods['pluck']->invoke(null, $array, 'users.*.first', 'account'));
+        $this->assertEquals([['foo'], [null, null]], self::$methods['pluck']->invoke(null, $array, 'users.*.email'));
     }
 
     /** @test */
     public function it_collapses_array()
     {
         $array = [[1], [2], [3], ['foo', 'bar'], ['baz', 'boom']];
-        $this->assertEquals([1, 2, 3, 'foo', 'bar', 'baz', 'boom'], LanguageLoader::collapse($array));
+        $this->assertEquals([1, 2, 3, 'foo', 'bar', 'baz', 'boom'], self::$methods['collapse']->invoke(null, $array));
     }
 
     /** @test */
     public function it_gets_file_content()
     {
-        $this->assertStringEqualsFile(__DIR__.'/../resources/languages.json', LanguageLoader::getFile(__DIR__.'/../resources/languages.json'));
+        $this->assertStringEqualsFile(__DIR__.'/../resources/languages.json', self::$methods['getFile']->invoke(null, __DIR__.'/../resources/languages.json'));
     }
 
     /** @test */
@@ -320,6 +329,6 @@ class LanguageLoaderTest extends PHPUnit_Framework_TestCase
     {
         $this->expectException(LanguageLoaderException::class);
 
-        LanguageLoader::getFile(__DIR__.'/../resources/invalid.json');
+        self::$methods['getFile']->invoke(null, __DIR__.'/../resources/invalid.json');
     }
 }
