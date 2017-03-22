@@ -149,7 +149,7 @@ Bug reports, feature requests, and pull requests are very welcome.
 
 We want to ensure that this package is secure for everyone. If you've discovered a security vulnerability in this package, we appreciate your help in disclosing it to us in a [responsible manner](https://en.wikipedia.org/wiki/Responsible_disclosure).
 
-Publicly disclosing a vulnerability can put the entire community at risk. If you've discovered a security concern, please email us at [security@rinvex.com](mailto:security@rinvex.com). We'll work with you to make sure that we understand the scope of the issue, and that we fully address your concern. We consider correspondence sent to [security@rinvex.com](mailto:security@rinvex.com) our highest priority, and work to address any issues that arise as quickly as possible.
+Publicly disclosing a vulnerability can put the entire community at risk. If you've discovered a security concern, please email us at [help@rinvex.com](mailto:help@rinvex.com). We'll work with you to make sure that we understand the scope of the issue, and that we fully address your concern. We consider correspondence sent to [help@rinvex.com](mailto:help@rinvex.com) our highest priority, and work to address any issues that arise as quickly as possible.
 
 After a security vulnerability has been corrected, a security hotfix release will be deployed as soon as possible.
 
