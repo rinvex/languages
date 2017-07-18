@@ -6,9 +6,9 @@ namespace Rinvex\Language\Test;
 
 use Exception;
 use Rinvex\Language\Language;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class LanguageTest extends PHPUnit_Framework_TestCase
+class LanguageTest extends TestCase
 {
     /** @var array */
     protected $languageArray;

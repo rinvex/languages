@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Rinvex\Language\Test;
 
 use Rinvex\Language\Language;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class HelpersTest extends PHPUnit_Framework_TestCase
+class HelpersTest extends TestCase
 {
     /** @test */
     public function it_returns_language_data_through_helper()

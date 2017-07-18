@@ -6,11 +6,11 @@ namespace Rinvex\Language\Test;
 
 use ReflectionClass;
 use Rinvex\Language\Language;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Rinvex\Language\LanguageLoader;
 use Rinvex\Language\LanguageLoaderException;
 
-class LanguageLoaderTest extends PHPUnit_Framework_TestCase
+class LanguageLoaderTest extends TestCase
 {
     /** @var array */
     protected static $methods;
