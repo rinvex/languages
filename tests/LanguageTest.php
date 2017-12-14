@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Language\Test;
+namespace Rinvex\Language\Tests;
 
 use Exception;
 use Rinvex\Language\Language;

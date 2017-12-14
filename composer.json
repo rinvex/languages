@@ -8,6 +8,7 @@
         "lightweight",
         "localization",
         "flexible",
+        "laravel",
         "locale",
         "family",
         "simple"
@@ -53,7 +54,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Rinvex\\Language\\Test\\": "tests"
+            "Rinvex\\Language\\Tests\\": "tests"
         }
     },
     "config": {
