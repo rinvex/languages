@@ -13,6 +13,7 @@
 ## Usage
 
 Install via `composer require rinvex/language`, then use intuitively:
+
 ```php
 // Get single language
 $english = language('en');
