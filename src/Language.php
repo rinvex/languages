@@ -52,7 +52,7 @@ class Language
      *
      * @return array|null
      */
-    public function getAttributes()
+    public function getAttributes(): ?array
     {
         return $this->attributes;
     }
@@ -108,7 +108,7 @@ class Language
      *
      * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->get('name');
     }
@@ -118,7 +118,7 @@ class Language
      *
      * @return string|null
      */
-    public function getNativeName()
+    public function getNativeName(): ?string
     {
         return $this->get('native');
     }
@@ -158,7 +158,7 @@ class Language
      *
      * @return array|null
      */
-    public function getScript()
+    public function getScript(): ?array
     {
         return $this->get('script');
     }
@@ -168,7 +168,7 @@ class Language
      *
      * @return string|null
      */
-    public function getScriptName()
+    public function getScriptName(): ?string
     {
         return $this->get('script.name');
     }
@@ -188,7 +188,7 @@ class Language
      *
      * @return string|null
      */
-    public function getScriptIsoNumeric()
+    public function getScriptIsoNumeric(): ?string
     {
         return $this->get('script.iso_numeric');
     }
@@ -198,7 +198,7 @@ class Language
      *
      * @return string|null
      */
-    public function getScriptDirection()
+    public function getScriptDirection(): ?string
     {
         return $this->get('script.direction');
     }
@@ -208,7 +208,7 @@ class Language
      *
      * @return array|null
      */
-    public function getFamily()
+    public function getFamily(): ?array
     {
         return $this->get('family');
     }
@@ -218,7 +218,7 @@ class Language
      *
      * @return string|null
      */
-    public function getFamilyName()
+    public function getFamilyName(): ?string
     {
         return $this->get('family.name');
     }
@@ -238,7 +238,7 @@ class Language
      *
      * @return string|null
      */
-    public function getFamilyHierarchy()
+    public function getFamilyHierarchy(): ?string
     {
         return $this->get('family.hierarchy');
     }
@@ -248,7 +248,7 @@ class Language
      *
      * @return string|null
      */
-    public function getScope()
+    public function getScope(): ?string
     {
         return $this->get('scope');
     }
@@ -258,7 +258,7 @@ class Language
      *
      * @return string|null
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->get('type');
     }
@@ -268,7 +268,7 @@ class Language
      *
      * @return array|null
      */
-    public function getCultures()
+    public function getCultures(): ?array
     {
         return $this->get('cultures');
     }
@@ -280,7 +280,7 @@ class Language
      *
      * @return array|null
      */
-    public function getCulture($culture = null)
+    public function getCulture($culture = null): ?array
     {
         return $this->getCultures()[$culture] ?? (! empty($this->getCultures()) ? current($this->getCultures()) : null);
     }
