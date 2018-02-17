@@ -16,6 +16,6 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 - Execute reflections once per test class
 
 ## v1.0.0 - 2017-01-01
-- Commit first draft
+- Tag first release
 
 [v1.1.0]: https://github.com/rinvex/language/compare/v1.0.0...v1.1.0
