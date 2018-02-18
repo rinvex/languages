@@ -8,6 +8,7 @@
         "lightweight",
         "localization",
         "flexible",
+        "laravel",
         "locale",
         "family",
         "simple"
@@ -38,10 +39,11 @@
         }
     ],
     "require": {
-        "php": "^7.0.0"
+        "php": "^7.1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.4.0"
+        "codedungeon/phpunit-result-printer": "^0.6.0",
+        "phpunit/phpunit": "^7.0.0"
     },
     "autoload": {
         "files": [
@@ -53,12 +55,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Rinvex\\Language\\Test\\": "tests"
+            "Rinvex\\Language\\Tests\\": "tests"
         }
     },
     "config": {
+        "sort-packages": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "optimize-autoloader": true
     },
     "extra": {
         "branch-alias": {

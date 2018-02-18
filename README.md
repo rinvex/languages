@@ -3,11 +3,9 @@
 **Rinvex Language** is a simple and lightweight package for retrieving language details with flexibility. A whole bunch of data including name, native, iso codes, language family, language script, language cultures, and other attributes for the 180+ known languages worldwide at your fingertips.
 
 [![Packagist](https://img.shields.io/packagist/v/rinvex/language.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/language)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/rinvex:language.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/rinvex:language/)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/language.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/language/)
 [![Code Climate](https://img.shields.io/codeclimate/github/rinvex/language.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/language)
 [![Travis](https://img.shields.io/travis/rinvex/language.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/language)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/4505ee8a-52fc-4229-ae93-7e4f2523bda9.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/4505ee8a-52fc-4229-ae93-7e4f2523bda9)
 [![StyleCI](https://styleci.io/repos/77772990/shield)](https://styleci.io/repos/77772990)
 [![License](https://img.shields.io/packagist/l/rinvex/language.svg?label=License&style=flat-square)](https://github.com/rinvex/language/blob/develop/LICENSE)
 
@@ -15,6 +13,7 @@
 ## Usage
 
 Install via `composer require rinvex/language`, then use intuitively:
+
 ```php
 // Get single language
 $english = language('en');
@@ -147,11 +146,7 @@ Bug reports, feature requests, and pull requests are very welcome.
 
 ## Security Vulnerabilities
 
-We want to ensure that this package is secure for everyone. If you've discovered a security vulnerability in this package, we appreciate your help in disclosing it to us in a [responsible manner](https://en.wikipedia.org/wiki/Responsible_disclosure).
-
-Publicly disclosing a vulnerability can put the entire community at risk. If you've discovered a security concern, please email us at [security@rinvex.com](mailto:security@rinvex.com). We'll work with you to make sure that we understand the scope of the issue, and that we fully address your concern. We consider correspondence sent to [security@rinvex.com](mailto:security@rinvex.com) our highest priority, and work to address any issues that arise as quickly as possible.
-
-After a security vulnerability has been corrected, a security hotfix release will be deployed as soon as possible.
+If you discover a security vulnerability within this project, please send an e-mail to [help@rinvex.com](help@rinvex.com). All security vulnerabilities will be promptly addressed.
 
 
 ## About Rinvex
@@ -163,4 +158,4 @@ Rinvex is a software solutions startup, specialized in integrated enterprise sol
 
 This software is released under [The MIT License (MIT)](LICENSE).
 
-(c) 2016-2017 Rinvex LLC, Some rights reserved.
+(c) 2016-2018 Rinvex LLC, Some rights reserved.
