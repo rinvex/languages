@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Language\Tests;
+namespace Rinvex\Language\Tests\Unit;
 
 use Rinvex\Language\Language;
 use PHPUnit\Framework\TestCase;
