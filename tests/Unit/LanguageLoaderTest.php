@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Language\Tests;
+namespace Rinvex\Language\Tests\Unit;
 
 use ReflectionClass;
 use Rinvex\Language\Language;

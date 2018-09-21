@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Language\Tests;
+namespace Rinvex\Language\Tests\Unit;
 
 use Exception;
 use Rinvex\Language\Language;
@@ -16,7 +16,7 @@ class LanguageTest extends TestCase
     /** @var \Rinvex\Language\Language */
     protected $languageObject;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
