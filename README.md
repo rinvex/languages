@@ -2,17 +2,17 @@
 
 **Rinvex Language** is a simple and lightweight package for retrieving language details with flexibility. A whole bunch of data including name, native, iso codes, language family, language script, language cultures, and other attributes for the 180+ known languages worldwide at your fingertips.
 
-[![Packagist](https://img.shields.io/packagist/v/rinvex/language.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/language)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/language.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/language/)
-[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/language.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/language)
-[![Travis](https://img.shields.io/travis/rinvex/language.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/language)
+[![Packagist](https://img.shields.io/packagist/v/rinvex/languages.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/rinvex/languages)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/languages.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/languages/)
+[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/languages.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/languages)
+[![Travis](https://img.shields.io/travis/rinvex/languages.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/languages)
 [![StyleCI](https://styleci.io/repos/77772990/shield)](https://styleci.io/repos/77772990)
-[![License](https://img.shields.io/packagist/l/rinvex/language.svg?label=License&style=flat-square)](https://github.com/rinvex/language/blob/develop/LICENSE)
+[![License](https://img.shields.io/packagist/l/rinvex/languages.svg?label=License&style=flat-square)](https://github.com/rinvex/languages/blob/develop/LICENSE)
 
 
 ## Usage
 
-Install via `composer require rinvex/language`, then use intuitively:
+Install via `composer require rinvex/languages`, then use intuitively:
 
 ```php
 // Get single language
