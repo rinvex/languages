@@ -1,9 +1,13 @@
-# Rinvex Language Change Log
+# Rinvex Languages Change Log
 
 All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
+
+## [v3.0.0] - 2018-10-01
+- Enforce Consistency
+- Rename package to rinvex/languages
 
 ## [v2.0.1] - 2018-09-22
 - Update travis php versions
@@ -36,6 +40,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v1.0.0 - 2017-01-01
 - Tag first release
 
-[v2.0.1]: https://github.com/rinvex/language/compare/v2.0.0...v2.0.1
-[v2.0.0]: https://github.com/rinvex/language/compare/v1.1.0...v2.0.0
-[v1.1.0]: https://github.com/rinvex/language/compare/v1.0.0...v1.1.0
+[v3.0.0]: https://github.com/rinvex/languages/compare/v2.0.1...v3.0.0
+[v2.0.1]: https://github.com/rinvex/languages/compare/v2.0.0...v2.0.1
+[v2.0.0]: https://github.com/rinvex/languages/compare/v1.1.0...v2.0.0
+[v1.1.0]: https://github.com/rinvex/languages/compare/v1.0.0...v1.1.0
