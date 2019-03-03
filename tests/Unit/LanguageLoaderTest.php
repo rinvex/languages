@@ -15,7 +15,7 @@ class LanguageLoaderTest extends TestCase
     /** @var array */
     protected static $methods;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $reflectedLoader = new ReflectionClass(LanguageLoader::class);
         self::$methods['get'] = $reflectedLoader->getMethod('get');
@@ -29,7 +29,7 @@ class LanguageLoaderTest extends TestCase
         }
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$methods = null;
     }
@@ -89,7 +89,7 @@ class LanguageLoaderTest extends TestCase
     public function it_returns_languages_array()
     {
         $this->assertEquals(183, count(LanguageLoader::languages()));
-        $this->assertInternalType('array', LanguageLoader::languages()['am']);
+        $this->assertIsArray(LanguageLoader::languages()['am']);
         $this->assertEquals('English', LanguageLoader::languages()['en']['name']);
     }
 
@@ -97,7 +97,7 @@ class LanguageLoaderTest extends TestCase
     public function it_returns_language_scripts_array()
     {
         $this->assertEquals(29, count(LanguageLoader::scripts()));
-        $this->assertInternalType('array', LanguageLoader::scripts());
+        $this->assertIsArray(LanguageLoader::scripts());
         $this->assertArrayHasKey('Arab', LanguageLoader::scripts());
     }
 
@@ -105,7 +105,7 @@ class LanguageLoaderTest extends TestCase
     public function it_returns_language_families_array()
     {
         $this->assertEquals(27, count(LanguageLoader::families()));
-        $this->assertInternalType('array', LanguageLoader::families());
+        $this->assertIsArray(LanguageLoader::families());
         $this->assertArrayHasKey('afa', LanguageLoader::families());
     }
 
@@ -113,7 +113,7 @@ class LanguageLoaderTest extends TestCase
     public function it_returns_language_hydrated()
     {
         $this->assertEquals(183, count(LanguageLoader::languages(true)));
-        $this->assertInternalType('object', LanguageLoader::languages(true)['en']);
+        $this->assertIsObject(LanguageLoader::languages(true)['en']);
         $this->assertEquals('English', LanguageLoader::languages(true)['en']->getName());
     }
 

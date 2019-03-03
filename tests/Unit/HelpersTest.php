@@ -47,7 +47,7 @@ class HelpersTest extends TestCase
     public function it_returns_languages_array_through_helper()
     {
         $this->assertEquals(183, count(languages()));
-        $this->assertInternalType('array', languages()['en']);
+        $this->assertIsArray(languages()['en']);
         $this->assertEquals('English', languages()['en']['name']);
     }
 
@@ -55,7 +55,7 @@ class HelpersTest extends TestCase
     public function it_returns_language_scripts_array_through_helper()
     {
         $this->assertEquals(29, count(language_scripts()));
-        $this->assertInternalType('array', language_scripts());
+        $this->assertIsArray(language_scripts());
         $this->assertArrayHasKey('Arab', language_scripts());
     }
 
@@ -63,7 +63,7 @@ class HelpersTest extends TestCase
     public function it_returns_language_families_array_through_helper()
     {
         $this->assertEquals(27, count(language_families()));
-        $this->assertInternalType('array', language_families());
+        $this->assertIsArray(language_families());
         $this->assertArrayHasKey('afa', language_families());
     }
 }
