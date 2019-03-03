@@ -16,7 +16,7 @@ class LanguageTest extends TestCase
     /** @var \Rinvex\Language\Language */
     protected $languageObject;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

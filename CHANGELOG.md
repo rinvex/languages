@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.0.0] - 2019-03-03
+- Rename environment variable QUEUE_DRIVER to QUEUE_CONNECTION
+- Require PHP 7.2 & Laravel 5.8
+- Apply PHPUnit 8 updates
+
 ## [v3.0.1] - 2018-12-22
 - Update composer dependencies
 - Add PHP 7.3 support to travis
@@ -44,6 +49,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v1.0.0 - 2017-01-01
 - Tag first release
 
+[v4.0.0]: https://github.com/rinvex/languages/compare/v3.0.1...v4.0.0
 [v3.0.1]: https://github.com/rinvex/languages/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/rinvex/languages/compare/v2.0.1...v3.0.0
 [v2.0.1]: https://github.com/rinvex/languages/compare/v2.0.0...v2.0.1
