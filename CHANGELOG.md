@@ -53,6 +53,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v1.0.0 - 2017-01-01
 - Tag first release
 
+[v4.1.0]: https://github.com/rinvex/languages/compare/v4.0.0...v4.1.0
 [v4.0.0]: https://github.com/rinvex/languages/compare/v3.0.1...v4.0.0
 [v3.0.1]: https://github.com/rinvex/languages/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/rinvex/languages/compare/v2.0.1...v3.0.0
