@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.1.2] - 2020-03-13
+- Tweak TravisCI config
+- Add migrations autoload option to the package
+- Tweak service provider `publishesResources`
+- Update StyleCI config
+
 ## [v4.1.1] - 2019-09-24
 - Add missing laravel/helpers composer package
 
