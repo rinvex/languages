@@ -17,6 +17,6 @@ class LanguageServiceProvider extends ServiceProvider
         // Add language validation rule
         Validator::extend('language', function ($attribute, $value) {
             return array_key_exists(mb_strtolower($value), languages());
-        }, 'Language MUST be valid!');
+        }, trans('validation.invalid_language'));
     }
 }
