@@ -136,6 +136,9 @@ class Language
     /**
      * Get the ISO 639-2 code.
      *
+     * @TODO: add support for both 639-2/T and 639-2/B
+     *        https://github.com/rinvex/languages/issues/19
+     *
      * @return string|null
      */
     public function getIso6392()
