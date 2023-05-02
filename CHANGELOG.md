@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v7.0.1] - 2023-05-02
+- 3c95156: Update phpunit to v10.1 from v9.5
+
 ## [v7.0.0] - 2023-01-09
 - Drop PHP v8.0 support and update composer dependencies
 
@@ -88,6 +91,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v1.0.0 - 2017-01-01
 - Tag first release
 
+[v7.0.1]: https://github.com/rinvex/languages/compare/v7.0.0...v7.0.1
 [v7.0.0]: https://github.com/rinvex/languages/compare/v6.0.1...v7.0.0
 [v6.0.1]: https://github.com/rinvex/languages/compare/v6.0.0...v6.0.1
 [v6.0.0]: https://github.com/rinvex/languages/compare/v5.0.3...v6.0.0
