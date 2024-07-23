@@ -15,8 +15,6 @@ class LanguageServiceProvider extends ServiceProvider
     public function boot()
     {
         // Add language validation rule
-        Validator::extend('language', function ($attribute, $value) {
-            return is_string($value) && mb_strlen($value) === 2 && array_key_exists(mb_strtolower($value), languages());
-        }, __('validation.invalid_language'));
+        Validator::extend('language', fn($attribute, $value) => is_string($value) && mb_strlen($value) === 2 && array_key_exists(mb_strtolower($value), languages()), __('validation.invalid_language'));
     }
 }

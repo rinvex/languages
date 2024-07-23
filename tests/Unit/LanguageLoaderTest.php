@@ -129,17 +129,13 @@ class LanguageLoaderTest extends TestCase
     public function it_filters_data(): void
     {
         $array1 = [['id' => 1, 'name' => 'Hello'], ['id' => 2, 'name' => 'World']];
-        $this->assertEquals([1 => ['id' => 2, 'name' => 'World']], self::$methods['filter']->invoke(null, $array1, function ($item) {
-            return $item['id'] === 2;
-        }));
+        $this->assertEquals([1 => ['id' => 2, 'name' => 'World']], self::$methods['filter']->invoke(null, $array1, fn($item) => $item['id'] === 2));
 
         $array2 = ['', 'Hello', '', 'World'];
         $this->assertEquals(['Hello', 'World'], array_values(self::$methods['filter']->invoke(null, $array2)));
 
         $array3 = ['id' => 1, 'first' => 'Hello', 'second' => 'World'];
-        $this->assertEquals(['first' => 'Hello', 'second' => 'World'], self::$methods['filter']->invoke(null, $array3, function ($item, $key) {
-            return $key !== 'id';
-        }));
+        $this->assertEquals(['first' => 'Hello', 'second' => 'World'], self::$methods['filter']->invoke(null, $array3, fn($item, $key) => $key !== 'id'));
     }
 
     /** @test */
@@ -152,9 +148,7 @@ class LanguageLoaderTest extends TestCase
         $this->assertEquals('Taylor', self::$methods['get']->invoke(null, $array, '0.users.0.name'));
         $this->assertNull(self::$methods['get']->invoke(null, $array, '0.users.3'));
         $this->assertEquals('Not found', self::$methods['get']->invoke(null, $array, '0.users.3', 'Not found'));
-        $this->assertEquals('Not found', self::$methods['get']->invoke(null, $array, '0.users.3', function () {
-            return 'Not found';
-        }));
+        $this->assertEquals('Not found', self::$methods['get']->invoke(null, $array, '0.users.3', fn() => 'Not found'));
         $this->assertEquals('Taylor', self::$methods['get']->invoke(null, $dottedArray, ['users', 'first.name']));
         $this->assertNull(self::$methods['get']->invoke(null, $dottedArray, ['users', 'middle.name']));
         $this->assertEquals('Not found', self::$methods['get']->invoke(null, $dottedArray, ['users', 'last.name'], 'Not found'));
