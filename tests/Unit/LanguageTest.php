@@ -51,7 +51,7 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_throws_an_exception_when_missing_mandatory_attributes()
+    public function it_throws_an_exception_when_missing_mandatory_attributes(): void
     {
         $this->expectException(Exception::class);
 
@@ -59,7 +59,7 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_sets_attributes_once_instantiated()
+    public function it_sets_attributes_once_instantiated(): void
     {
         $this->assertEquals($this->languageArray['name'], $this->languageObject->getName());
         $this->assertEquals($this->languageArray['native'], $this->languageObject->getNativeName());
@@ -67,13 +67,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_attributes()
+    public function it_gets_attributes(): void
     {
         $this->assertEquals($this->languageArray, $this->languageObject->getAttributes());
     }
 
     /** @test */
-    public function it_sets_attributes()
+    public function it_sets_attributes(): void
     {
         $this->languageObject->setAttributes(['iso_639_3' => 'cha']);
 
@@ -81,25 +81,25 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_dotted_attribute()
+    public function it_gets_dotted_attribute(): void
     {
         $this->assertEquals($this->languageArray['script']['iso_15924'], $this->languageObject->get('script.iso_15924'));
     }
 
     /** @test */
-    public function it_gets_default_when_missing_value()
+    public function it_gets_default_when_missing_value(): void
     {
         $this->assertEquals('default', $this->languageObject->get('unknown', 'default'));
     }
 
     /** @test */
-    public function it_gets_all_attributes_when_missing_key()
+    public function it_gets_all_attributes_when_missing_key(): void
     {
         $this->assertEquals($this->languageArray, $this->languageObject->get(null));
     }
 
     /** @test */
-    public function it_sets_attribute()
+    public function it_sets_attribute(): void
     {
         $this->languageObject->set('iso_639_3', 'cha');
 
@@ -107,19 +107,19 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function its_fluently_chainable_when_sets_attributes()
+    public function its_fluently_chainable_when_sets_attributes(): void
     {
         $this->assertEquals($this->languageObject, $this->languageObject->setAttributes([]));
     }
 
     /** @test */
-    public function it_returns_name()
+    public function it_returns_name(): void
     {
         $this->assertEquals($this->languageArray['name'], $this->languageObject->getName());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_name()
+    public function it_returns_null_when_missing_name(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -127,13 +127,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_native_name()
+    public function it_returns_native_name(): void
     {
         $this->assertEquals($this->languageArray['native'], $this->languageObject->getNativeName());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_native_name()
+    public function it_returns_null_when_missing_native_name(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -141,13 +141,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_iso6391()
+    public function it_returns_iso6391(): void
     {
         $this->assertEquals($this->languageArray['iso_639_1'], $this->languageObject->getIso6391());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_iso6391()
+    public function it_returns_null_when_missing_iso6391(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -155,13 +155,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_iso6392()
+    public function it_returns_iso6392(): void
     {
         $this->assertEquals($this->languageArray['iso_639_2'], $this->languageObject->getIso6392());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_iso6392()
+    public function it_returns_null_when_missing_iso6392(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -169,13 +169,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_iso6393()
+    public function it_returns_iso6393(): void
     {
         $this->assertEquals($this->languageArray['iso_639_3'], $this->languageObject->getIso6393());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_iso6393()
+    public function it_returns_null_when_missing_iso6393(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -183,13 +183,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_script()
+    public function it_returns_script(): void
     {
         $this->assertEquals($this->languageArray['script'], $this->languageObject->getScript());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_script()
+    public function it_returns_null_when_missing_script(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -197,13 +197,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_script_name()
+    public function it_returns_script_name(): void
     {
         $this->assertEquals($this->languageArray['script']['name'], $this->languageObject->getScriptName());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_script_name()
+    public function it_returns_null_when_missing_script_name(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -211,13 +211,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_script_iso_15924()
+    public function it_returns_script_iso_15924(): void
     {
         $this->assertEquals($this->languageArray['script']['iso_15924'], $this->languageObject->getScriptIso15924());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_script_iso_15924()
+    public function it_returns_null_when_missing_script_iso_15924(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -225,13 +225,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_script_iso_numeric()
+    public function it_returns_script_iso_numeric(): void
     {
         $this->assertEquals($this->languageArray['script']['iso_numeric'], $this->languageObject->getScriptIsoNumeric());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_script_iso_numeric()
+    public function it_returns_null_when_missing_script_iso_numeric(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -239,13 +239,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_script_direction()
+    public function it_returns_script_direction(): void
     {
         $this->assertEquals($this->languageArray['script']['direction'], $this->languageObject->getScriptDirection());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_script_direction()
+    public function it_returns_null_when_missing_script_direction(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -253,13 +253,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_family()
+    public function it_returns_family(): void
     {
         $this->assertEquals($this->languageArray['family'], $this->languageObject->getFamily());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_family()
+    public function it_returns_null_when_missing_family(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -267,13 +267,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_family_name()
+    public function it_returns_family_name(): void
     {
         $this->assertEquals($this->languageArray['family']['name'], $this->languageObject->getFamilyName());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_family_name()
+    public function it_returns_null_when_missing_family_name(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -281,13 +281,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_family_iso_639_5()
+    public function it_returns_family_iso_639_5(): void
     {
         $this->assertEquals($this->languageArray['family']['iso_639_5'], $this->languageObject->getFamilyIso6395());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_family_iso_639_5()
+    public function it_returns_null_when_missing_family_iso_639_5(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -295,13 +295,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_family_hierarchy()
+    public function it_returns_family_hierarchy(): void
     {
         $this->assertEquals($this->languageArray['family']['hierarchy'], $this->languageObject->getFamilyHierarchy());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_family_hierarchy()
+    public function it_returns_null_when_missing_family_hierarchy(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -309,13 +309,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_scope()
+    public function it_returns_scope(): void
     {
         $this->assertEquals($this->languageArray['scope'], $this->languageObject->getScope());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_scope()
+    public function it_returns_null_when_missing_scope(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -323,13 +323,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_type()
+    public function it_returns_type(): void
     {
         $this->assertEquals($this->languageArray['type'], $this->languageObject->getType());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_type()
+    public function it_returns_null_when_missing_type(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -337,13 +337,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_cultures()
+    public function it_returns_cultures(): void
     {
         $this->assertEquals($this->languageArray['cultures'], $this->languageObject->getCultures());
     }
 
     /** @test */
-    public function it_returns_null_when_missing_cultures()
+    public function it_returns_null_when_missing_cultures(): void
     {
         $this->languageObject->setAttributes([]);
 
@@ -351,13 +351,13 @@ class LanguageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_culture()
+    public function it_returns_culture(): void
     {
         $this->assertEquals($this->languageArray['cultures']['am-ET'], $this->languageObject->getCulture('am-ET'));
     }
 
     /** @test */
-    public function it_returns_null_when_missing_culture()
+    public function it_returns_null_when_missing_culture(): void
     {
         $this->languageObject->setAttributes([]);
 

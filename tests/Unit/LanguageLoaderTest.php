@@ -35,7 +35,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_language_data()
+    public function it_returns_language_data(): void
     {
         $languageArray = [
             'name' => 'Amharic',
@@ -69,7 +69,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_data_with_where_conditions()
+    public function it_gets_data_with_where_conditions(): void
     {
         $this->assertEquals(['ar', 'fa', 'ks', 'ku', 'ps', 'sd', 'ug', 'ur'], array_keys(LanguageLoader::where('script.name', 'Arabic')));
         $this->assertEquals('Arabic', current(LanguageLoader::where('native', '=', 'العربية'))['name']);
@@ -86,7 +86,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_languages_array()
+    public function it_returns_languages_array(): void
     {
         $this->assertEquals(183, count(LanguageLoader::languages()));
         $this->assertIsArray(LanguageLoader::languages()['am']);
@@ -94,7 +94,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_language_scripts_array()
+    public function it_returns_language_scripts_array(): void
     {
         $this->assertEquals(29, count(LanguageLoader::scripts()));
         $this->assertIsArray(LanguageLoader::scripts());
@@ -102,7 +102,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_language_families_array()
+    public function it_returns_language_families_array(): void
     {
         $this->assertEquals(27, count(LanguageLoader::families()));
         $this->assertIsArray(LanguageLoader::families());
@@ -110,7 +110,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_language_hydrated()
+    public function it_returns_language_hydrated(): void
     {
         $this->assertEquals(183, count(LanguageLoader::languages(true)));
         $this->assertIsObject(LanguageLoader::languages(true)['en']);
@@ -118,7 +118,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_throws_an_exception_when_invalid_language()
+    public function it_throws_an_exception_when_invalid_language(): void
     {
         $this->expectException(LanguageLoaderException::class);
 
@@ -126,7 +126,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_filters_data()
+    public function it_filters_data(): void
     {
         $array1 = [['id' => 1, 'name' => 'Hello'], ['id' => 2, 'name' => 'World']];
         $this->assertEquals([1 => ['id' => 2, 'name' => 'World']], self::$methods['filter']->invoke(null, $array1, function ($item) {
@@ -143,7 +143,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_data()
+    public function it_gets_data(): void
     {
         $object = (object) ['users' => ['name' => ['Taylor', 'Otwell']]];
         $array = [(object) ['users' => [(object) ['name' => 'Taylor']]]];
@@ -161,13 +161,13 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_target_when_missing_key()
+    public function it_returns_target_when_missing_key(): void
     {
         $this->assertEquals(['test'], self::$methods['get']->invoke(null, ['test'], null));
     }
 
     /** @test */
-    public function it_gets_data_with_nested_arrays()
+    public function it_gets_data_with_nested_arrays(): void
     {
         $array = [
             ['name' => 'taylor', 'email' => 'taylorotwell@gmail.com'],
@@ -191,7 +191,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_data_with_nested_double_nested_arrays_and_collapses_result()
+    public function it_gets_data_with_nested_double_nested_arrays_and_collapses_result(): void
     {
         $array = [
             'posts' => [
@@ -222,7 +222,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_plucks_array()
+    public function it_plucks_array(): void
     {
         $data = [
             'post-1' => [
@@ -258,7 +258,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_plucks_array_with_array_and_object_values()
+    public function it_plucks_array_with_array_and_object_values(): void
     {
         $array = [(object) ['name' => 'taylor', 'email' => 'foo'], ['name' => 'dayle', 'email' => 'bar']];
         $this->assertEquals(['taylor', 'dayle'], self::$methods['pluck']->invoke(null, $array, 'name'));
@@ -266,7 +266,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_plucks_array_with_nested_keys()
+    public function it_plucks_array_with_nested_keys(): void
     {
         $array = [['user' => ['taylor', 'otwell']], ['user' => ['dayle', 'rees']]];
         $this->assertEquals(['taylor', 'dayle'], self::$methods['pluck']->invoke(null, $array, 'user.0'));
@@ -276,7 +276,7 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_plucks_array_with_nested_arrays()
+    public function it_plucks_array_with_nested_arrays(): void
     {
         $array = [
             [
@@ -299,20 +299,20 @@ class LanguageLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_collapses_array()
+    public function it_collapses_array(): void
     {
         $array = [[1], [2], [3], ['foo', 'bar'], ['baz', 'boom']];
         $this->assertEquals([1, 2, 3, 'foo', 'bar', 'baz', 'boom'], self::$methods['collapse']->invoke(null, $array));
     }
 
     /** @test */
-    public function it_gets_file_content()
+    public function it_gets_file_content(): void
     {
         $this->assertStringEqualsFile(__DIR__.'/../resources/languages.json', self::$methods['getFile']->invoke(null, __DIR__.'/../resources/languages.json'));
     }
 
     /** @test */
-    public function it_throws_an_exception_when_invalid_file()
+    public function it_throws_an_exception_when_invalid_file(): void
     {
         $this->expectException(LanguageLoaderException::class);
 

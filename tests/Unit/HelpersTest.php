@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class HelpersTest extends TestCase
 {
     /** @test */
-    public function it_returns_language_data_through_helper()
+    public function it_returns_language_data_through_helper(): void
     {
         $amharic = [
             'name' => 'Amharic',
@@ -44,7 +44,7 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_languages_array_through_helper()
+    public function it_returns_languages_array_through_helper(): void
     {
         $this->assertEquals(183, count(languages()));
         $this->assertIsArray(languages()['en']);
@@ -52,7 +52,7 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_language_scripts_array_through_helper()
+    public function it_returns_language_scripts_array_through_helper(): void
     {
         $this->assertEquals(29, count(language_scripts()));
         $this->assertIsArray(language_scripts());
@@ -60,7 +60,7 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_language_families_array_through_helper()
+    public function it_returns_language_families_array_through_helper(): void
     {
         $this->assertEquals(27, count(language_families()));
         $this->assertIsArray(language_families());
