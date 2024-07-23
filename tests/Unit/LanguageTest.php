@@ -13,7 +13,7 @@ class LanguageTest extends TestCase
     /** @var array */
     protected $languageArray;
 
-    /** @var \Rinvex\Language\Language */
+    /** @var Language */
     protected $languageObject;
 
     protected function setUp(): void

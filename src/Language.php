@@ -20,7 +20,7 @@ class Language
      *
      * @param array $attributes
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct($attributes)
     {

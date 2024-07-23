@@ -21,9 +21,9 @@ class LanguageLoader
      * @param string $code
      * @param bool   $hydrate
      *
-     * @throws \Rinvex\Language\LanguageLoaderException
+     * @throws LanguageLoaderException
      *
-     * @return \Rinvex\Language\Language|array
+     * @return Language|array
      */
     public static function language($code, $hydrate = true)
     {
@@ -111,7 +111,7 @@ class LanguageLoader
      * @param string $key
      * @param string $operator
      *
-     * @return \Closure
+     * @return Closure
      */
     protected static function operatorForWhere($key, $operator, mixed $value)
     {
@@ -251,7 +251,7 @@ class LanguageLoader
      *
      * @param string $filePath
      *
-     * @throws \Rinvex\Language\LanguageLoaderException
+     * @throws LanguageLoaderException
      *
      * @return string
      */

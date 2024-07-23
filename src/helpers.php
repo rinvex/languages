@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use Rinvex\Language\Language;
 
 use Rinvex\Language\LanguageLoader;
 
@@ -11,7 +12,7 @@ if (! function_exists('language')) {
      * @param string $code
      * @param bool   $hydrate
      *
-     * @return \Rinvex\Language\Language|array
+     * @return Language|array
      */
     function language($code, $hydrate = true)
     {
