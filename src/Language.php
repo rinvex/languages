@@ -255,6 +255,6 @@ class Language
      */
     public function getCulture($culture = null): ?array
     {
-        return $this->getCultures()[$culture] ?? (! empty($this->getCultures()) ? current($this->getCultures()) : null);
+        return $this->getCultures()[$culture] ?? (empty($this->getCultures()) ? null : current($this->getCultures()));
     }
 }
