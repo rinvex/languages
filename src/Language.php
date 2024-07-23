@@ -49,8 +49,6 @@ class Language
 
     /**
      * Get the attributes.
-     *
-     * @return array|null
      */
     public function getAttributes(): ?array
     {
@@ -103,8 +101,6 @@ class Language
 
     /**
      * Get the name.
-     *
-     * @return string|null
      */
     public function getName(): ?string
     {
@@ -113,8 +109,6 @@ class Language
 
     /**
      * Get the given native name or fallback to first native name.
-     *
-     * @return string|null
      */
     public function getNativeName(): ?string
     {
@@ -156,8 +150,6 @@ class Language
 
     /**
      * Get the script.
-     *
-     * @return array|null
      */
     public function getScript(): ?array
     {
@@ -166,8 +158,6 @@ class Language
 
     /**
      * Get the script name.
-     *
-     * @return string|null
      */
     public function getScriptName(): ?string
     {
@@ -186,8 +176,6 @@ class Language
 
     /**
      * Get the script ISO numeric.
-     *
-     * @return string|null
      */
     public function getScriptIsoNumeric(): ?string
     {
@@ -196,8 +184,6 @@ class Language
 
     /**
      * Get the script direction.
-     *
-     * @return string|null
      */
     public function getScriptDirection(): ?string
     {
@@ -206,8 +192,6 @@ class Language
 
     /**
      * Get the family.
-     *
-     * @return array|null
      */
     public function getFamily(): ?array
     {
@@ -216,8 +200,6 @@ class Language
 
     /**
      * Get the family name.
-     *
-     * @return string|null
      */
     public function getFamilyName(): ?string
     {
@@ -236,8 +218,6 @@ class Language
 
     /**
      * Get the family hierarchy.
-     *
-     * @return string|null
      */
     public function getFamilyHierarchy(): ?string
     {
@@ -246,8 +226,6 @@ class Language
 
     /**
      * Get the scope.
-     *
-     * @return string|null
      */
     public function getScope(): ?string
     {
@@ -256,8 +234,6 @@ class Language
 
     /**
      * Get the type.
-     *
-     * @return string|null
      */
     public function getType(): ?string
     {
@@ -266,8 +242,6 @@ class Language
 
     /**
      * Get the cultures.
-     *
-     * @return array|null
      */
     public function getCultures(): ?array
     {
@@ -278,8 +252,6 @@ class Language
      * Get the given culture.
      *
      * @param string|null $culture
-     *
-     * @return array|null
      */
     public function getCulture($culture = null): ?array
     {
