@@ -10,10 +10,8 @@ class LanguageLoaderException extends Exception
 {
     /**
      * Create a new exception instance.
-     *
-     * @return static
      */
-    public static function invalidLanguage()
+    public static function invalidLanguage(): static
     {
         return new static('Language code may be misspelled, invalid, or data not found on server!');
     }
