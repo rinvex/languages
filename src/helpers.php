@@ -37,10 +37,8 @@ if (! function_exists('languages')) {
 if (! function_exists('language_scripts')) {
     /**
      * Get all language scripts.
-     *
-     * @return array
      */
-    function language_scripts()
+    function language_scripts(): array
     {
         return LanguageLoader::scripts();
     }
@@ -49,10 +47,8 @@ if (! function_exists('language_scripts')) {
 if (! function_exists('language_families')) {
     /**
      * Get all language families.
-     *
-     * @return array
      */
-    function language_families()
+    function language_families(): array
     {
         return LanguageLoader::families();
     }

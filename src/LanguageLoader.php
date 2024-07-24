@@ -84,10 +84,8 @@ class LanguageLoader
      * Filter items by the given key value pair.
      *
      * @param string $key
-     *
-     * @return array
      */
-    public static function where($key, mixed $operator, mixed $value = null)
+    public static function where($key, mixed $operator, mixed $value = null): array
     {
         if (func_num_args() === 2) {
             $value = $operator;
