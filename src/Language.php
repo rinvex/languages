@@ -40,7 +40,7 @@ class Language
      *
      * @return $this
      */
-    public function setAttributes($attributes)
+    public function setAttributes($attributes): static
     {
         $this->attributes = $attributes;
 
@@ -62,7 +62,7 @@ class Language
      *
      * @return $this
      */
-    public function set($key, mixed $value)
+    public function set($key, mixed $value): static
     {
         $this->attributes[$key] = $value;
 
