@@ -17,12 +17,12 @@ class LanguageLoaderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        $reflectedLoader = new ReflectionClass(LanguageLoader::class);
-        self::$methods['get'] = $reflectedLoader->getMethod('get');
-        self::$methods['pluck'] = $reflectedLoader->getMethod('pluck');
-        self::$methods['filter'] = $reflectedLoader->getMethod('filter');
-        self::$methods['getFile'] = $reflectedLoader->getMethod('getFile');
-        self::$methods['collapse'] = $reflectedLoader->getMethod('collapse');
+        $reflectionClass = new ReflectionClass(LanguageLoader::class);
+        self::$methods['get'] = $reflectionClass->getMethod('get');
+        self::$methods['pluck'] = $reflectionClass->getMethod('pluck');
+        self::$methods['filter'] = $reflectionClass->getMethod('filter');
+        self::$methods['getFile'] = $reflectionClass->getMethod('getFile');
+        self::$methods['collapse'] = $reflectionClass->getMethod('collapse');
 
         foreach (self::$methods as $method) {
             $method->setAccessible(true);
