@@ -58,10 +58,8 @@ class LanguageLoader
 
     /**
      * Get all language scripts.
-     *
-     * @return array
      */
-    public static function scripts()
+    public static function scripts(): array
     {
         if (! isset(static::$languages)) {
             static::$languages = json_decode(static::getFile(__DIR__.'/../resources/languages.json'), true);
@@ -72,10 +70,8 @@ class LanguageLoader
 
     /**
      * Get all language families.
-     *
-     * @return array
      */
-    public static function families()
+    public static function families(): array
     {
         if (! isset(static::$languages)) {
             static::$languages = json_decode(static::getFile(__DIR__.'/../resources/languages.json'), true);
@@ -139,10 +135,8 @@ class LanguageLoader
      *
      * @param array         $items
      * @param callable|null $callback
-     *
-     * @return array
      */
-    protected static function filter($items, callable $callback = null)
+    protected static function filter($items, callable $callback = null): array
     {
         if ($callback) {
             return array_filter($items, $callback, ARRAY_FILTER_USE_BOTH);
@@ -251,7 +245,7 @@ class LanguageLoader
      *
      * @return string
      */
-    public static function getFile($filePath)
+    public static function getFile($filePath): string | false
     {
         if (! file_exists($filePath)) {
             throw LanguageLoaderException::invalidLanguage();
