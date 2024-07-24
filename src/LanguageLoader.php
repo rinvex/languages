@@ -53,7 +53,7 @@ class LanguageLoader
             static::$languages = json_decode(static::getFile(__DIR__.'/../resources/languages.json'), true);
         }
 
-        return $hydrate ? array_map(fn($language) => new Language($language), static::$languages) : static::$languages;
+        return $hydrate ? array_map(fn($language): Language => new Language($language), static::$languages) : static::$languages;
     }
 
     /**
