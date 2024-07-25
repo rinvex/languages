@@ -6,10 +6,11 @@ namespace Rinvex\Language\Tests\Unit;
 
 use Rinvex\Language\Language;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class HelpersTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_returns_language_data_through_helper(): void
     {
         $amharic = [
@@ -43,7 +44,7 @@ class HelpersTest extends TestCase
         $this->assertEquals(new Language($amharic), language('am'));
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_languages_array_through_helper(): void
     {
         $this->assertEquals(183, count(languages()));
@@ -51,7 +52,7 @@ class HelpersTest extends TestCase
         $this->assertEquals('English', languages()['en']['name']);
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_language_scripts_array_through_helper(): void
     {
         $this->assertEquals(29, count(language_scripts()));
@@ -59,7 +60,7 @@ class HelpersTest extends TestCase
         $this->assertArrayHasKey('Arab', language_scripts());
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_language_families_array_through_helper(): void
     {
         $this->assertEquals(27, count(language_families()));
