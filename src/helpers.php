@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 use Rinvex\Language\Language;
-
 use Rinvex\Language\LanguageLoader;
 
 if (! function_exists('language')) {
