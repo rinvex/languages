@@ -308,7 +308,8 @@ class LanguageLoaderTest extends TestCase
     /** @test */
     public function it_gets_file_content()
     {
-        $this->assertStringEqualsFile(__DIR__.'/../resources/languages.json', self::$methods['getFile']->invoke(null, __DIR__.'/../resources/languages.json'));
+        $path = realpath(dirname(__DIR__, 2).'/resources/languages.json');
+        $this->assertStringEqualsFile($path, self::$methods['getFile']->invoke(null, $path));
     }
 
     /** @test */
